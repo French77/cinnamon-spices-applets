@@ -20,6 +20,12 @@ class LocationStore {
         var _a;
         if (this.app.Locked())
             return;
+        for (let index = 0; index < locs.length; index++) {
+            const element = locs[index];
+            if (!element.entryText) {
+                locs[index] = this.EnsureSearchEntry(element);
+            }
+        }
         let currentIndex = this.FindIndex(this.config.CurrentLocation);
         let newIndex = this.FindIndex(this.config.CurrentLocation, locs);
         let currentlyDisplayedChanged = false;
@@ -64,6 +70,11 @@ class LocationStore {
                 };
         }
         return null;
+    }
+    EnsureSearchEntry(loc) {
+        if (!loc.entryText)
+            loc.entryText = `${loc.lat},${loc.lon}`;
+        return loc;
     }
     GetNextLocation(currentLoc) {
         logger_1.Log.Instance.Debug("Current location: " + JSON.stringify(currentLoc, null, 2));
@@ -138,6 +149,7 @@ class LocationStore {
             notification_service_1.NotificationService.Instance.Send(utils_1._("Info") + " - " + utils_1._("Location Store"), utils_1._("Location is already saved"), true);
             return;
         }
+        loc.timeZone = this.app.config.Timezone;
         this.locations.push(loc);
         this.currentIndex = this.locations.length - 1;
         this.InvokeStorageChanged();

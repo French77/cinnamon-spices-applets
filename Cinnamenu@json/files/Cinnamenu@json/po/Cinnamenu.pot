@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 14:57+0000\n"
+"POT-Creation-Date: 2021-03-04 02:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,19 +26,19 @@ msgstr ""
 msgid "No description available"
 msgstr ""
 
-msgid "All Applications"
+msgid "All applications"
 msgstr ""
 
 msgid "Places"
 msgstr ""
 
-msgid "Recent Files"
+msgid "Recent files"
 msgstr ""
 
 msgid "Bookmarks"
 msgstr ""
 
-msgid "Favorite Apps"
+msgid "Favorite apps"
 msgstr ""
 
 msgid "gir1.2-gda-5.0 package required for Firefox and Midori bookmarks."
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Switch to list view"
 msgstr ""
 
-msgid "Lock Screen"
+msgid "Lock screen"
 msgstr ""
 
 msgid "Lock the screen"
@@ -110,48 +110,6 @@ msgstr ""
 msgid "Uninstall"
 msgstr ""
 
-msgid "This file is no longer available"
-msgstr ""
-
-msgid "Open with"
-msgstr ""
-
-msgid "Other application..."
-msgstr ""
-
-msgid "Menu"
-msgstr ""
-
-msgid "Clear list"
-msgstr ""
-
-msgid "Clear all recent documents"
-msgstr ""
-
-msgid "No recent documents"
-msgstr ""
-
-msgid "Favorites"
-msgstr ""
-
-msgid "Lock screen"
-msgstr ""
-
-msgid "Shut down the computer"
-msgstr ""
-
-msgid "Reset category order"
-msgstr ""
-
-msgid "Open containing folder"
-msgstr ""
-
-msgid "Move to trash"
-msgstr ""
-
-msgid "Error while moving file to trash:"
-msgstr ""
-
 msgid "Find files..."
 msgstr ""
 
@@ -170,16 +128,31 @@ msgstr ""
 msgid "Too many entries - showing first 1000 entries only"
 msgstr ""
 
-msgid "All applications"
-msgstr ""
-
-msgid "Recent files"
-msgstr ""
-
-msgid "Favorite apps"
+msgid "Favorites"
 msgstr ""
 
 msgid "Home folder"
+msgstr ""
+
+msgid "Reset category order"
+msgstr ""
+
+msgid "This file is no longer available"
+msgstr ""
+
+msgid "Open with"
+msgstr ""
+
+msgid "Other application..."
+msgstr ""
+
+msgid "Open containing folder"
+msgstr ""
+
+msgid "Move to trash"
+msgstr ""
+
+msgid "Error while moving file to trash:"
 msgstr ""
 
 msgid "Open..."
@@ -233,7 +206,7 @@ msgstr ""
 msgid "Skipping"
 msgstr ""
 
-msgid " - direcotry already searched"
+msgid " - directory already searched"
 msgstr ""
 
 msgid "Cinnamenu"
@@ -260,6 +233,9 @@ msgid "No search provider extensions found"
 msgstr ""
 
 msgid "Panel"
+msgstr ""
+
+msgid "Menu"
 msgstr ""
 
 msgid "Layout"
@@ -436,16 +412,15 @@ msgstr ""
 msgid "Choose where to show the session buttons (quit, logout, etc.)"
 msgstr ""
 
+msgid ""
+"\n"
+"Info/tip: Drag on the menu edge to change the menu size.\n"
+msgstr ""
+
 msgid "Add favorites to session buttons"
 msgstr ""
 
 msgid "Show your favorite app icons next to the session buttons"
-msgstr ""
-
-msgid "Show recent files"
-msgstr ""
-
-msgid "Show recent files category in the menu"
 msgstr ""
 
 msgid ""
@@ -465,10 +440,13 @@ msgstr ""
 msgid "Show home folder category in the menu"
 msgstr ""
 
-msgid "Always open menu on favorite apps"
+msgid "Open menu on category:"
 msgstr ""
 
-msgid "Always open the menu with favorite apps category selected"
+msgid "Always open the menu with this category selected"
+msgstr ""
+
+msgid "Last used category"
 msgstr ""
 
 msgid "Autoscroll the application list on mouse hover"
@@ -490,12 +468,6 @@ msgid "DuckDuckGo"
 msgstr ""
 
 msgid "Show an internet search option in search results"
-msgstr ""
-
-msgid "Enable emoji search"
-msgstr ""
-
-msgid "Show emojis in search results"
 msgstr ""
 
 msgid "Show hidden files"

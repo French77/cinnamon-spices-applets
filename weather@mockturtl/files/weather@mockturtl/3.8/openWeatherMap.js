@@ -8,11 +8,11 @@ class OpenWeatherMap {
     constructor(_app) {
         this.prettyName = "OpenWeatherMap";
         this.name = "OpenWeatherMap";
-        this.maxForecastSupport = 7;
+        this.maxForecastSupport = 8;
         this.website = "https://openweathermap.org/";
         this.maxHourlyForecastSupport = 48;
         this.needsApiKey = false;
-        this.supportedLanguages = ["af", "ar", "az", "bg", "ca", "cz", "da", "de", "el", "en", "eu", "fa", "fi",
+        this.supportedLanguages = ["af", "al", "ar", "az", "bg", "ca", "cz", "da", "de", "el", "en", "eu", "fa", "fi",
             "fr", "gl", "he", "hi", "hr", "hu", "id", "it", "ja", "kr", "la", "lt", "mk", "no", "nl", "pl",
             "pt", "pt_br", "ro", "ru", "se", "sk", "sl", "sp", "es", "sr", "th", "tr", "ua", "uk", "vi", "zh_cn", "zh_tw", "zu"
         ];
@@ -66,6 +66,22 @@ class OpenWeatherMap {
                 },
                 forecasts: []
             };
+            let immediate = {
+                start: -1,
+                end: -1
+            };
+            for (let index = 0; index < (json === null || json === void 0 ? void 0 : json.minutely.length); index++) {
+                const element = json === null || json === void 0 ? void 0 : json.minutely[index];
+                if (element.precipitation > 0 && immediate.start == -1) {
+                    immediate.start = index;
+                    continue;
+                }
+                else if (element.precipitation == 0 && immediate.start != -1) {
+                    immediate.end = index;
+                    break;
+                }
+            }
+            weather.immediatePrecipitation = immediate;
             let forecasts = [];
             for (let i = 0; i < json.daily.length; i++) {
                 let day = json.daily[i];
@@ -96,20 +112,21 @@ class OpenWeatherMap {
                         customIcon: self.ResolveCustomIcon(hour.weather[0].icon)
                     },
                 };
-                if (!!hour.rain) {
+                if (hour.pop >= 0.1) {
                     forecast.precipitation = {
-                        volume: hour.rain["1h"],
-                        type: "rain"
+                        chance: hour.pop * 100,
+                        type: "none",
+                        volume: null
                     };
                 }
-                if (!!hour.snow) {
-                    forecast.precipitation = {
-                        volume: hour.snow["1h"],
-                        type: "snow"
-                    };
+                if (!!hour.rain && forecast.precipitation != null) {
+                    forecast.precipitation.volume = hour.rain["1h"];
+                    forecast.precipitation.type = "rain";
                 }
-                if (!!hour.pop && forecast.precipitation)
-                    forecast.precipitation.chance = hour.pop * 100;
+                if (!!hour.snow && forecast.precipitation != null) {
+                    forecast.precipitation.volume = hour.snow["1h"];
+                    forecast.precipitation.type = "snow";
+                }
                 hourly.push(forecast);
             }
             weather.hourlyForecasts = hourly;

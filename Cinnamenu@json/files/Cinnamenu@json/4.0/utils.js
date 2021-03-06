@@ -1,5 +1,6 @@
-const SEARCH_DEBUG = false;
+const GLib = imports.gi.GLib;
 const Gettext = imports.gettext;
+Gettext.bindtextdomain('Cinnamenu@json', GLib.get_home_dir() + "/.local/share/locale");
 
 function _(str) {
     let cinnamonTranslation = Gettext.gettext(str);
@@ -8,14 +9,6 @@ function _(str) {
     }
     return Gettext.dgettext('Cinnamenu@json', str);
 }
-
-const APPTYPE = {
-    application: 0,
-    place: 1,
-    file: 2,
-    provider: 3,
-    clearlist_button: 4
-};
 
 // Work around Cinnamon#8201
 const tryFn = function(callback, errCallback) {
@@ -78,12 +71,10 @@ var showTooltip = (actor, xpos, ypos, center_x, text) => {
     onlyOneTooltip = new NewTooltip (actor, xpos, ypos, center_x, text);
 };
 
-var hideTooltip = () => {
+var hideTooltipIfVisible = () => {
     if (onlyOneTooltip) {
         onlyOneTooltip.destroy();
         onlyOneTooltip = null;
-    } else {
-        global.log("Cinnamenu: Tooltip already removed.");
     }
 };
 
@@ -193,9 +184,6 @@ const searchStr = (q, str, quick = false) => {
             foundPosition = str2.indexOf(longest);
             foundLength = longest.length;
             score = Math.min(longest.length / qletters.length, 1.0) * bigrams_score;
-            /*if (score>=0.4){
-                global.log(qletters+">"+longest+" "+score+":"+bigrams_score);
-            }*/
         }
     }
     //return result of match
@@ -203,14 +191,10 @@ const searchStr = (q, str, quick = false) => {
         let markup = str.slice(0, foundPosition) + '<b>' +
                                     str.slice(foundPosition, foundPosition + foundLength) + '</b>' +
                                                     str.slice(foundPosition + foundLength, str.length);
-        if (SEARCH_DEBUG) {
-            markup += ':' + score + ':' + bigrams_score;
-        }
         return {score: score, result: markup};
     } else {
         return {score: score, result: str};
     }
 };
 
-module.exports = {SEARCH_DEBUG, _, APPTYPE, tryFn, readFileAsync, readJSONAsync, wordWrap,
-                                                            showTooltip, hideTooltip, searchStr};
+module.exports = {_, readFileAsync, readJSONAsync, wordWrap, showTooltip, hideTooltipIfVisible, searchStr};
