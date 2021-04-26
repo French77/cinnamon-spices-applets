@@ -23,12 +23,41 @@
  */
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
-const {readJSONAsync} = require('./utils');
+const ByteArray = imports.byteArray;
 
 let Gda = null;
 try {
     Gda = imports.gi.Gda;
 } catch(e) {}
+
+const readFileAsync = function(file, opts = {utf8: true}) {
+    const {utf8} = opts;
+    return new Promise(function(resolve, reject) {
+        if (typeof file === 'string' || file instanceof String) {
+            file = Gio.File.new_for_path(file);
+        }
+        if (!file.query_exists(null)) reject(new Error('File does not exist.'));
+        file.load_contents_async(null, function(object, result) {
+            try {
+                let [success, data] = file.load_contents_finish(result);
+                if (!success) return reject(new Error('File cannot be read.'));
+                if (utf8) {
+                    if (data instanceof Uint8Array) data = ByteArray.toString(data);
+                    else data = data.toString();
+                }
+                resolve(data);
+            } catch(e) {
+                reject(e);
+            }
+        });
+    });
+};
+
+const readJSONAsync = function(file) {
+    return readFileAsync(file).then(function(json) {
+        return JSON.parse(json);
+    });
+};
 
 const readFirefoxBookmarks = function(appInfo, profileDir) {
     let connection, bookmarks = [];
@@ -219,11 +248,10 @@ class BookmarksManager {
                     this.state.push(bm[bmKeys[i]]);
                 }
             }
-            this.state.sort( (a, b) => { return (a.name.toLowerCase() > b.name.toLowerCase()) ?
-                                            1 : (a.name.toLowerCase() < b.name.toLowerCase()) ? -1 : 0;  });
+            this.state.sort( (a, b) => { return (a.name.toUpperCase() > b.name.toUpperCase()) ?
+                                            1 : (a.name.toUpperCase() < b.name.toUpperCase()) ? -1 : 0;  });
         }).catch((e) => global.log(e.message, e.stack));
     }
 }
-
 
 module.exports = {BookmarksManager};

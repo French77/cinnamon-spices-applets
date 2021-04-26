@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-04 02:56+0000\n"
+"POT-Creation-Date: 2021-04-12 19:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,6 +116,9 @@ msgstr ""
 msgid "Please wait..."
 msgstr ""
 
+msgid "No recent Items"
+msgstr ""
+
 msgid "Solution:"
 msgstr ""
 
@@ -125,13 +128,19 @@ msgstr ""
 msgid "Search web for"
 msgstr ""
 
-msgid "Too many entries - showing first 1000 entries only"
+msgid "Trash"
 msgstr ""
 
 msgid "Favorites"
 msgstr ""
 
+msgid "Recent"
+msgstr ""
+
 msgid "Home folder"
+msgstr ""
+
+msgid "Too many entries - showing first 1000 entries only"
 msgstr ""
 
 msgid "Reset category order"
@@ -155,10 +164,10 @@ msgstr ""
 msgid "Error while moving file to trash:"
 msgstr ""
 
-msgid "Open..."
+msgid "Error while opening file:"
 msgstr ""
 
-msgid "Open Containing Folder..."
+msgid "Open"
 msgstr ""
 
 msgid "Search"
@@ -313,7 +322,9 @@ msgstr ""
 msgid "Show web bookmarks"
 msgstr ""
 
-msgid "Show your browser's web bookmarks in the menu"
+msgid ""
+"Show your browser's web bookmarks in the menu.\n"
+"Note: Install package gir1.2-gda-5.0 to read firefox bookmarks."
 msgstr ""
 
 msgid "Enable searching of open windows"
@@ -328,13 +339,16 @@ msgstr ""
 msgid "Example Search Providers"
 msgstr ""
 
-msgid "Startup applications view mode"
+msgid "Open menu on category:"
 msgstr ""
 
 msgid "List"
 msgstr ""
 
 msgid "Grid"
+msgstr ""
+
+msgid "Always open the menu with this category selected"
 msgstr ""
 
 msgid "columns"
@@ -365,9 +379,6 @@ msgid "Tooltip delay"
 msgstr ""
 
 msgid "Use a custom menu height"
-msgstr ""
-
-msgid "px"
 msgstr ""
 
 msgid "Custom menu height"
@@ -423,11 +434,6 @@ msgstr ""
 msgid "Show your favorite app icons next to the session buttons"
 msgstr ""
 
-msgid ""
-"Show your browser's web bookmarks in the menu.\n"
-"Note: Install package gir1.2-gda-5.0 to read firefox bookmarks."
-msgstr ""
-
 msgid "Show favorite apps category"
 msgstr ""
 
@@ -440,16 +446,16 @@ msgstr ""
 msgid "Show home folder category in the menu"
 msgstr ""
 
-msgid "Open menu on category:"
-msgstr ""
-
-msgid "Always open the menu with this category selected"
-msgstr ""
-
 msgid "Last used category"
 msgstr ""
 
 msgid "Autoscroll the application list on mouse hover"
+msgstr ""
+
+msgid "Enable emoji search"
+msgstr ""
+
+msgid "Show emojis in search results"
 msgstr ""
 
 msgid "Web search option"
@@ -468,6 +474,12 @@ msgid "DuckDuckGo"
 msgstr ""
 
 msgid "Show an internet search option in search results"
+msgstr ""
+
+msgid "Search home folder"
+msgstr ""
+
+msgid "When searching, also search home folder for files"
 msgstr ""
 
 msgid "Show hidden files"
@@ -492,4 +504,12 @@ msgid "Session buttons icon size"
 msgstr ""
 
 msgid "Use session buttons box style"
+msgstr ""
+
+msgid "Use tile style"
+msgstr ""
+
+msgid ""
+"Use a tile style for the application buttons (Note: may not work on some "
+"themes)"
 msgstr ""
